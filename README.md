@@ -14,8 +14,8 @@ The repo is based on the [VMama repo](https://github.com/MzeroMiko/VMamba), thus
 
 Clone this repository and navigate to the project directory:
 ```bash
-git clone https://github.com/ChenHongruixuan/MambaCD.git
-cd MambaCD
+git clone https://github.com/ChenHongruixuan/HAM-CD.git
+cd HAM-CD
 ```
 
 
@@ -83,7 +83,7 @@ ${DATASET_ROOT}   # Dataset root directory, for example: /home/username/data/SYS
 Before training models, please enter into [`changedetection`] folder, which contains all the code for network definitions, training and testing. 
 
 ```bash
-cd <project_path>/MambaCD/changedetection
+cd <project_path>/HAM-CD/changedetection
 ```
 
 ***Binary change detection***
@@ -97,7 +97,7 @@ python script/train_HAMBCD.py  --dataset 'SYSU'  --batch_size 8   --crop_size 25
 
 Before inference, please enter into [`changedetection`] folder. 
 ```bash
-cd <project_path>/MambaCD/changedetection
+cd <project_path>/HAM-CD/changedetection
 ```
 
 
