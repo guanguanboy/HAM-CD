@@ -122,5 +122,34 @@ python script/infer_HAM-CD.py  --dataset 'WHU-CD' --model_type 'MambaBCD_Small' 
 ```
 
 ```bash
-python script/infer_HAMBCD.py  --dataset 'LEVIR-CD+' --model_type 'MambaBCD_Small'  --test_dataset_path '/data/lgl/datasets/LEVIR-CD-256/test'  --test_data_list_path '/data/lgl/datasets/LEVIR-CD-256/test_list.txt' --cfg '/data/lgl/codes/MambaCD/changedetection/configs/vssm1/vssm_small_224.yaml'  --resume '/data/lgl/codes/MambaCD/changedetection/saved_models/LEVIR-CD+/MambaBCD_Small_1742903788.749594/26000_model.pth'
+python script/infer_HAM-CD.py  --dataset 'LEVIR-CD+' --model_type 'MambaBCD_Small'  --test_dataset_path '/data/lgl/datasets/LEVIR-CD-256/test'  --test_data_list_path '/data/lgl/datasets/LEVIR-CD-256/test_list.txt' --cfg '/data/lgl/codes/HAM-CD/changedetection/configs/vssm1/vssm_small_224.yaml'  --resume '/data/lgl/codes/HAM-CD/changedetection/saved_models/LEVIR-CD+/MambaBCD_Small_1742903788.749594/26000_model.pth'
 ```
+
+### `F. Evaluation on Cross-Modal datasets`
+
+## Cross-Modal datasets
+* California：https://sites.google.com/view/luppino/data
+
+* **Data structure**<br>
+├─A <br>
+├─B <br>
+├─label<br>
+└─list<br>
+`A`: images of t1 phase;<br>
+`B`: images of t2 phase;<br>
+`label`: label maps;<br>
+`list`: the image file names in the change detection dataset are recorded in .train.txt, val.txt and test.txt respectively.<br>
+
+* Procced Datasets (With Train and Test data Split):
+* Apply the matlab script to split train and test set: crop_and_split.m
+* The processed dataset are shared at Baidu Disk. Link: https://pan.baidu.com/s/1XrFtShzE7-_pohKWBSWSxw?pwd=hda2 Code: hda2
+```bash
+
+python script/train_HAM-CD.py  --dataset 'California'  --batch_size 8   --crop_size 256   --max_iters 320000 --model_type MambaBCD_Small  --model_param_path '/data/lgl/codes/HAM-CD/changedetection/saved_models'    --train_dataset_path '/data/lgl/datasets/California/train'  --train_data_list_path '/data/lgl/datasets/California/train_list.txt'    --test_dataset_path '/data/lgl/datasets/California/test'   --test_data_list_path '/data/lgl/datasets/California/test_list.txt'     --cfg '/data/lgl/codes/HAM-CD/changedetection/configs/vssm1/vssm_small_224.yaml'  --pretrained_weight_path '/data/lgl/codes/HAM-CD/pretrained_weight/vssm_small_0229_ckpt_epoch_222.pth'
+```
+
+```bash
+
+python script/infer_HAM-CD.py  --dataset 'California' --model_type 'MambaBCD_Small'  --test_dataset_path '/data/lgl/datasets/California/test'  --test_data_list_path '/data/lgl/datasets/California/test_list.txt' --cfg '/data/lgl/codes/HAM-CD/changedetection/configs/vssm1/vssm_small_224.yaml'  --resume '/data/lgl/codes/HAM-CD/changedetection/saved_models/California/MambaBCD_Small_1767513093.9377186/40000_model.pth'
+```
+
