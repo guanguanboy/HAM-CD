@@ -44,7 +44,7 @@ pip install mmdet==3.3.0 mmsegmentation==1.2.2 mmpretrain==1.2.0
 ### `B. Download Pretrained Weight`
 Also, please download the pretrained weights of [VMamba-Tiny](https://zenodo.org/records/14037769), [VMamba-Small](https://zenodo.org/records/14037769), and [VMamba-Base](https://zenodo.org/records/14037769) and put them under 
 ```bash
-project_path/MambaCD/pretrained_weight/
+project_path/HAM-CD/pretrained_weight/
 ```
 
 ### `C. Data Preparation`
@@ -87,15 +87,15 @@ cd <project_path>/HAM-CD/changedetection
 
 The following commands show how to train and evaluate HAMCD-Small on the SYSU dataset:
 ```bash
-python script/train_HAMBCD.py  --dataset 'SYSU'  --batch_size 8   --crop_size 256   --max_iters 320000   --model_type MambaBCD_Small  --model_param_path '/data/lgl/codes/MambaCD/changedetection/saved_models'    --train_dataset_path '/data/lgl/datasets/SYSU-CD/train'  --train_data_list_path '/data/lgl/datasets/SYSU-CD/train_list.txt'    --test_dataset_path '/data/lgl/datasets/SYSU-CD/test'   --test_data_list_path '/data/lgl/datasets/SYSU-CD/test_list.txt'     --cfg '/data/lgl/codes/MambaCD/changedetection/configs/vssm1/vssm_small_224.yaml'  --pretrained_weight_path '/data/lgl/codes/MambaCD/pretrained_weight/vssm_small_0229_ckpt_epoch_222.pth'
+python script/train_HAM-CD.py  --dataset 'SYSU'  --batch_size 8   --crop_size 256   --max_iters 320000   --model_type MambaBCD_Small  --model_param_path '/data/lgl/codes/HAM-CD/changedetection/saved_models'    --train_dataset_path '/data/lgl/datasets/SYSU-CD/train'  --train_data_list_path '/data/lgl/datasets/SYSU-CD/train_list.txt'    --test_dataset_path '/data/lgl/datasets/SYSU-CD/test'   --test_data_list_path '/data/lgl/datasets/SYSU-CD/test_list.txt'     --cfg '/data/lgl/codes/HAM-CD/changedetection/configs/vssm1/vssm_small_224.yaml'  --pretrained_weight_path '/data/lgl/codes/MambaCD/pretrained_weight/vssm_small_0229_ckpt_epoch_222.pth'
 ```
 
 ```bash
-nohup python script/train_HAMBCD.py  --dataset 'LEVIR-CD+'  --batch_size 8   --crop_size 256   --max_iters 320000   --model_type MambaBCD_Small  --model_param_path '/data/lgl/codes/MambaCD/changedetection/saved_models'    --train_dataset_path '/data/lgl/datasets/LEVIR-CD-256/train'  --train_data_list_path '/data/lgl/datasets/LEVIR-CD-256/train_list.txt'    --test_dataset_path '/data/lgl/datasets/LEVIR-CD-256/test'   --test_data_list_path '/data/lgl/datasets/LEVIR-CD-256/test_list.txt'     --cfg '/data/lgl/codes/MambaCD/changedetection/configs/vssm1/vssm_small_224.yaml'  --pretrained_weight_path '/data/lgl/codes/MambaCD/pretrained_weight/vssm_small_0229_ckpt_epoch_222.pth' > train_on_LEVIR-CD-256-GFM.txt &
+nohup python script/train_HAM-CD.py  --dataset 'LEVIR-CD+'  --batch_size 8   --crop_size 256   --max_iters 320000   --model_type MambaBCD_Small  --model_param_path '/data/lgl/codes/HAM-CD/changedetection/saved_models'    --train_dataset_path '/data/lgl/datasets/LEVIR-CD-256/train'  --train_data_list_path '/data/lgl/datasets/LEVIR-CD-256/train_list.txt'    --test_dataset_path '/data/lgl/datasets/LEVIR-CD-256/test'   --test_data_list_path '/data/lgl/datasets/LEVIR-CD-256/test_list.txt'     --cfg '/data/lgl/codes/HAM-CD/changedetection/configs/vssm1/vssm_small_224.yaml'  --pretrained_weight_path '/data/lgl/codes/HAM-CD/pretrained_weight/vssm_small_0229_ckpt_epoch_222.pth' &
 ```
 
 ```bash
-nohup python script/train_HAMBCD.py  --dataset 'WHU-CD'  --batch_size 8   --crop_size 256   --max_iters 320000   --model_type MambaBCD_Small  --model_param_path '/data/lgl/codes/MambaCD/changedetection/saved_models'    --train_dataset_path '/data/lgl/datasets/WHU-CD-256/train'  --train_data_list_path '/data/lgl/datasets/WHU-CD-256/train_list.txt'    --test_dataset_path '/data/lgl/datasets/WHU-CD-256/test'   --test_data_list_path '/data/lgl/datasets/WHU-CD-256/test_list.txt'     --cfg '/data/lgl/codes/MambaCD/changedetection/configs/vssm1/vssm_small_224.yaml'  --pretrained_weight_path '/data/lgl/codes/MambaCD/pretrained_weight/vssm_small_0229_ckpt_epoch_222.pth' > train_on_WHU-CD-256-GFM.txt &
+nohup python script/train_HAM-CD.py  --dataset 'WHU-CD'  --batch_size 8   --crop_size 256   --max_iters 320000   --model_type MambaBCD_Small  --model_param_path '/data/lgl/codes/HAM-CD/changedetection/saved_models'    --train_dataset_path '/data/lgl/datasets/WHU-CD-256/train'  --train_data_list_path '/data/lgl/datasets/WHU-CD-256/train_list.txt'    --test_dataset_path '/data/lgl/datasets/WHU-CD-256/test'   --test_data_list_path '/data/lgl/datasets/WHU-CD-256/test_list.txt'     --cfg '/data/lgl/codes/HAM-CD/changedetection/configs/vssm1/vssm_small_224.yaml'  --pretrained_weight_path '/data/lgl/codes/HAM-CD/pretrained_weight/vssm_small_0229_ckpt_epoch_222.pth' > train_on_WHU-CD-256-GFM.txt &
 
 ```
 
@@ -114,11 +114,11 @@ The following commands show how to infer binary change maps using trained MambaB
 * **` Kind reminder`**: Please use [--resume] to load our trained model, instead of using [--pretrained_weight_path]. 
 
 ```bash
-python script/infer_HAMBCD.py  --dataset 'SYSU' --model_type 'MambaBCD_Small'  --test_dataset_path '/data/lgl/datasets/SYSU-CD/test'  --test_data_list_path '/data/lgl/datasets/SYSU-CD/test_list.txt' --cfg '/data/lgl/codes/MambaCD/changedetection/configs/vssm1/vssm_small_224.yaml'  --resume '/data/lgl/codes/MambaCD/changedetection/saved_models/SYSU/MambaBCD_Small_1742872326.241806/40000_model.pth'
+python script/infer_HAM-CD.py  --dataset 'SYSU' --model_type 'MambaBCD_Small'  --test_dataset_path '/data/lgl/datasets/SYSU-CD/test'  --test_data_list_path '/data/lgl/datasets/SYSU-CD/test_list.txt' --cfg '/data/lgl/codes/HAM-CD/changedetection/configs/vssm1/vssm_small_224.yaml'  --resume '/data/lgl/codes/MambaCD/changedetection/saved_models/SYSU/HAM-CD_Small_1742872326.241806/40000_model.pth'
 ```
 
 ```bash
-python script/infer_HAMBCD.py  --dataset 'WHU-CD' --model_type 'MambaBCD_Small'  --test_dataset_path '/data/lgl/datasets/WHU-CD-256/test'  --test_data_list_path '/data/lgl/datasets/WHU-CD-256/test_list.txt' --cfg '/data/lgl/codes/MambaCD/changedetection/configs/vssm1/vssm_small_224.yaml'  --resume '/data/lgl/codes/MambaCD/changedetection/saved_models/WHU-CD/MambaBCD_Small_1742953346.4456656/38000_model.pth'
+python script/infer_HAM-CD.py  --dataset 'WHU-CD' --model_type 'MambaBCD_Small'  --test_dataset_path '/data/lgl/datasets/WHU-CD-256/test'  --test_data_list_path '/data/lgl/datasets/WHU-CD-256/test_list.txt' --cfg '/data/lgl/codes/HAM-CD/changedetection/configs/vssm1/vssm_small_224.yaml'  --resume '/data/lgl/codes/HAM-CD/changedetection/saved_models/WHU-CD/HAM-CD_Small_1742953346.4456656/38000_model.pth'
 ```
 
 ```bash
